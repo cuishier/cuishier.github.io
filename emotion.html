@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="keywords" content="沙雕动画,人物素材,表情素材,背景素材,道具素材,动画素材下载">
+<meta name="description" content="专业沙雕动画素材库，提供人物、表情、背景、道具免费下载。">
+<title>沙雕动画素材库 - 人物表情背景道具免费下载</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>十二的素材 - 表情</title>
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- 顶部主题封面 -->
+<section class="top-banner">
+  <div class="banner-mask"></div>
+  <div class="banner-text">
+    <h1>表情素材</h1>
+    <p>沙雕动画专用表情合集</p>
+  </div>
+</section>
+
+<!-- 导航栏 -->
+<nav class="navbar">
+  <div class="nav-wrap">
+    <a href="index.html" class="logo">素材</a>
+    <ul class="nav-menu">
+      <li><a href="index.html"><i class="fa fa-home"></i> 首页</a></li>
+      <li><a href="character.html"><i class="fa fa-user"></i> 人物</a></li>
+      <li><a href="emotion.html"><i class="fa fa-smile"></i> 表情</a></li>
+      <li><a href="background.html"><i class="fa fa-image"></i> 背景</a></li>
+      <li><a href="prop.html"><i class="fa fa-cube"></i> 道具</a></li>
+      <li><a href="about.html"><i class="fa fa-info-circle"></i> 站点说明</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- 搜索+分类筛选 -->
+<div class="search-area">
+  <input type="text" class="search-input" id="searchInp" placeholder="输入表情名称搜索...">
+  <button class="filter-btn active" data-type="all">全部</button>
+  <button class="filter-btn" data-type="搞笑">搞笑</button>
+  <button class="filter-btn" data-type="情绪">情绪</button>
+  <button class="filter-btn" data-type="特效">特效</button>
+</div>
+
+<!-- 表情卡片列表 -->
+<div class="char-container" id="charBox"></div>
+
+<!-- 下载弹窗 -->
+<div class="mask-layer" id="mask">
+  <div class="down-pop">
+    <h3 class="pop-title" id="popName">表情名称</h3>
+    <p>选择下方链接进行文件下载：</p>
+    <a class="down-link" id="link1" href="" target="_blank">📁 高清原图下载</a>
+    <a class="down-link" id="link2" href="" target="_blank">📦 打包文件下载</a>
+    <button class="close-pop" id="closePop">关闭弹窗</button>
+  </div>
+</div>
+
+<script>
+// 表情数据源
+const charList = [
+  {
+    name:"大笑表情",desc:"沙雕动画专用大笑脸",type:"搞笑",
+    img:"https://picsum.photos/seed/laugh/400/500",
+    url1:"https://pan.baidu.com/s/em1",
+    url2:"https://pan.baidu.com/s/em2"
+  },
+  {
+    name:"生气表情",desc:"愤怒情绪专用表情",type:"情绪",
+    img:"https://picsum.photos/seed/angry/400/500",
+    url1:"https://pan.baidu.com/s/em3",
+    url2:"https://pan.baidu.com/s/em4"
+  },
+  {
+    name:"闪光特效",desc:"高光时刻特效表情",type:"特效",
+    img:"https://picsum.photos/seed/flash/400/500",
+    url1:"https://pan.baidu.com/s/em5",
+    url2:"https://pan.baidu.com/s/em6"
+  },
+  {
+    name:"委屈表情",desc:"可怜巴巴情绪表情",type:"情绪",
+    img:"https://picsum.photos/seed/sad/400/500",
+    url1:"#",url2:"#"
+  },
+  {
+    name:"嘲讽表情",desc:"搞笑嘲讽脸",type:"搞笑",
+    img:"https://picsum.photos/seed/taunt/400/500",
+    url1:"#",url2:"#"
+  },
+  {
+    name:"爆炸特效",desc:"情绪爆发特效表情",type:"特效",
+    img:"https://picsum.photos/seed/boom/400/500",
+    url1:"#",url2:"#"
+  }
+];
+
+// 以下逻辑和人物页面完全一致，仅数据源不同
+const charBox = document.getElementById('charBox');
+const searchInp = document.getElementById('searchInp');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const mask = document.getElementById('mask');
+const popName = document.getElementById('popName');
+const link1 = document.getElementById('link1');
+const link2 = document.getElementById('link2');
+const closePop = document.getElementById('closePop');
+let nowType = "all";
+
+function renderData(arr){
+  charBox.innerHTML = "";
+  arr.forEach(item=>{
+    let html = `
+      <div class="char-card">
+        <img class="card-pic" src="${item.img}" alt="${item.name}">
+        <div class="card-info">
+          <div class="card-name">${item.name}</div>
+          <div class="card-desc">${item.desc}</div>
+          <button class="down-btn" data-name="${item.name}" data-u1="${item.url1}" data-u2="${item.url2}">
+            <i class="fa fa-download"></i> 下载文件
+          </button>
+        </div>
+      </div>
+    `;
+    charBox.innerHTML += html;
+  })
+  bindDownEvent();
+}
+
+function bindDownEvent(){
+  document.querySelectorAll('.down-btn').forEach(btn=>{
+    btn.onclick = function(){
+      popName.innerText = this.dataset.name;
+      link1.href = this.dataset.u1;
+      link2.href = this.dataset.u2;
+      mask.style.display = "flex";
+    }
+  })
+}
+
+filterBtns.forEach(btn=>{
+  btn.onclick = function(){
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    this.classList.add('active');
+    nowType = this.dataset.type;
+    filterAndSearch();
+  }
+})
+
+function filterAndSearch(){
+  let key = searchInp.value.trim().toLowerCase();
+  let res = charList.filter(item=>{
+    let matchType = nowType==="all" || item.type===nowType;
+    let matchKey = item.name.toLowerCase().includes(key);
+    return matchType && matchKey;
+  })
+  renderData(res);
+}
+
+searchInp.addEventListener('input',filterAndSearch);
+
+closePop.onclick = ()=>mask.style.display = "none";
+mask.onclick = (e)=>{
+  if(e.target===mask) mask.style.display = "none";
+}
+
+renderData(charList);
+</script>
+</body>
+</html>

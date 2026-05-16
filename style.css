@@ -1,0 +1,219 @@
+/* style.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+:root {
+  --primary: #12141d;
+  --secondary: #1a1c2c;
+  --accent: #4080ff;
+  --text: #f0f2f5;
+  --card-bg: #1e2132;
+  --border: #33374a;
+}
+body {
+  background: var(--primary);
+  color: var(--text);
+}
+/* 顶部主题封面 */
+.top-banner {
+  width: 100%;
+  height: 420px;
+  background: url(https://r2.image-upload.app/tyImg/a0fD5tNC.jpeg) center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner-mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+.banner-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.banner-text h1 {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 10px #000;
+}
+.banner-text p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+/* 导航栏 */
+.navbar {
+  background: var(--secondary);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+}
+.nav-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-menu a {
+  color: var(--text);
+  text-decoration: none;
+  transition: 0.3s;
+}
+.nav-menu a:hover {
+  color: var(--accent);
+}
+/* 搜索筛选区 */
+.search-area {
+  max-width: 1400px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.search-input {
+  flex: 1;
+  min-width: 280px;
+  padding: 0.8rem 1rem;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: #fff;
+  outline: none;
+}
+.filter-btn {
+  padding: 0.7rem 1.2rem;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+/* 卡片容器（通用） */
+.char-container {
+  max-width: 1400px;
+  margin: 0 auto 5rem;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.8rem;
+}
+.char-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+.char-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(64,128,255,0.2);
+  border-color: var(--accent);
+}
+.card-pic {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+}
+.card-info {
+  padding: 1rem;
+}
+.card-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.card-desc {
+  font-size: 0.85rem;
+  color: #a0a8c0;
+  margin-bottom: 10px;
+}
+.down-btn {
+  width: 100%;
+  padding: 0.6rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.2s;
+}
+.down-btn:hover {
+  background: #2962ff;
+}
+/* 下载弹窗 */
+.mask-layer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.down-pop {
+  width: 420px;
+  background: var(--secondary);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid var(--border);
+}
+.pop-title {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+.down-link {
+  display: block;
+  padding: 0.8rem;
+  background: var(--card-bg);
+  margin: 8px 0;
+  border-radius: 6px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.close-pop {
+  margin-top: 15px;
+  width: 100%;
+  padding: 0.7rem;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* 响应式 */
+@media (max-width:768px){
+  .top-banner{height:260px;}
+  .banner-text h1{font-size:2rem;}
+  .char-container{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
+  .card-pic{height:200px;}
+}
