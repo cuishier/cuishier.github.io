@@ -3,11 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>素材库</title>
-<link rel="stylesheet" href="style.css">
+<title>沙雕动画素材库</title>
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+:root {
+  --primary: #12141d;
+  --secondary: #1a1c2c;
+  --accent: #4080ff;
+  --text: #f0f2f5;
+  --card-bg: #1e2132;
+  --border: #33374a;
+}
+body {
+  background: var(--primary);
+  color: var(--text);
+}
+.top-banner {
+  width: 100%;
+  height: 420px;
+  background: url(https://picsum.photos/1920/800) center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner-mask {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+.banner-text {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.banner-text h1 {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 10px #000;
+}
+.banner-text p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+.navbar {
+  background: var(--secondary);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+.nav-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-menu a {
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-menu a:hover {
+  color: var(--accent);
+}
+</style>
 </head>
 <body>
 
+<!-- 背景音乐：惊鸿一面 -->
 <audio src="https://files.catbox.moe/8z7x9n.mp3" autoplay loop>
 
 <section class="top-banner">
@@ -22,14 +103,19 @@
 <div class="nav-wrap">
 <a href="index.html" class="logo">素材库</a>
 <ul class="nav-menu">
-<li><a href="index.html">首页</a></li>
-<li><a href="character.html">人物</a></li>
-<li><a href="emotion.html">表情</a></li>
-<li><a href="background.html">背景</a></li>
-<li><a href="prop.html">道具</a></li>
+<li><a href="index.html"><i class="fa fa-home"></i> 首页</a></li>
+<li><a href="character.html"><i class="fa fa-user"></i> 人物</a></li>
+<li><a href="emotion.html"><i class="fa fa-smile"></i> 表情</a></li>
+<li><a href="background.html"><i class="fa fa-image"></i> 背景</a></li>
+<li><a href="prop.html"><i class="fa fa-cube"></i> 道具</a></li>
 </ul>
 </div>
 </nav>
+
+<div style="max-width:1400px;margin:4rem auto;padding:0 2rem;text-align:center;">
+<h2 style="font-size:2rem;margin-bottom:2rem;color:var(--accent);">欢迎使用素材库</h2>
+<p style="font-size:1.1rem;line-height:1.8;">点击上方导航，查看对应分类素材</p>
+</div>
 
 </body>
 </html>
